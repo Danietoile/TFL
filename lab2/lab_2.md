@@ -42,12 +42,6 @@ $b\varepsilon ac = bac$.
 | Q11 | Q6  | Q6  | Q1  |
 | Q12 | Q6  | Q6  | Q0  |
 
-Проверка контрпримера `bac`:
-$$
-Q1 \xrightarrow{b} Q2 \xrightarrow{a} Q10 \xrightarrow{c} Q0 \in F,
-$$
-то есть `bac` принимается, как и должно быть.
-
 ---
 
 ## Минимальность 
