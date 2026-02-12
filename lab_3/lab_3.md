@@ -3,7 +3,7 @@
 ## 1. Определение языка
 
 ```math
-L = \\{w_1\, a^n\, w_2 \mid (|w_1| = n \lor |w_2| < n)\ \&\ w_i \in \\{a, b\\}^*\\}
+L = \{w_1\, a^n\, w_2 \mid (|w_1| = n \lor |w_2| \lt n)\ \&\ w_i \in \{a, b\}^*\}
 ```
 
 Алфавит: $\Sigma = \{a, b\}$.
@@ -22,11 +22,11 @@ L = \\{w_1\, a^n\, w_2 \mid (|w_1| = n \lor |w_2| < n)\ \&\ w_i \in \\{a, b\\}^*
 Представим $L = L_1 \cup L_2$, где:
 
 ```math
-L_1 = \\{w_1\, a^n\, w_2 : |w_1| = n,\ n \geq 1,\ w_1, w_2 \in \\{a,b\\}^*\\}
+L_1 = \{w_1\, a^n\, w_2 : |w_1| = n,\ n \geq 1,\ w_1, w_2 \in \{a,b\}^*\}
 ```
 
 ```math
-L_2 = \\{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1,\ w_1, w_2 \in \\{a,b\\}^*\\}
+L_2 = \{w_1\, a^n\, w_2 : |w_2| \lt n,\ n \geq 1,\ w_1, w_2 \in \{a,b\}^*\}
 ```
 
 ### 2.1. Характеризация $L_1$
@@ -106,7 +106,7 @@ L_2 = \\{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1,\ w_1, w_2 \in \\{a,b\\}^*\\}
 Рассмотрим пересечение $\overline{L}$ с регулярным языком $b^* a^* b^*$:
 
 ```math
-\overline{L} \cap b^* a^* b^* = \\{b^i a^j b^k : j < i\ \text{и}\ j \leq k\\} \cup \\{b^i b^k : i,k \geq 0\\}
+\overline{L} \cap b^* a^* b^* = \{b^i a^j b^k : j \lt i\ \text{и}\ j \leq k\} \cup \{b^i b^k : i,k \geq 0\}
 ```
 
 (строки без $a$ тривиально не в $L$; строки $b^i a^j b^k$ не в $L$ тогда и только тогда, когда $j < i$ и $j \leq k$, что было показано в разделе 2.)
@@ -163,7 +163,7 @@ R \to a\,R \mid b\,R \mid \varepsilon
 ### 4.2. Грамматика для $L_2$
 
 ```math
-L_2 = \{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1\}
+L_2 = \{w_1\, a^n\, w_2 : |w_2| \lt n,\ n \geq 1\}
 ```
 
 Перепишем условие: $n > |w_2|$, т.е. $n = |w_2| + k$, $k \geq 1$.
@@ -199,7 +199,7 @@ Q \to a\,Q \mid b\,Q \mid a
 ### 4.3. Полная грамматика для $L$
 
 ```math
-G = (\\{S, S_1, S_2, T, R, Q, U\\},\ \\{a, b\\},\ P,\ S)
+G = (\{S, S_1, S_2, T, R, Q, U\},\ \{a, b\},\ P,\ S)
 ```
 
 Правила $P$:
@@ -399,21 +399,21 @@ M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)
 
 | Нетерминал | FOLLOW |
 |------------|--------|
-| $S$ | $\{\$\}$ |
-| $S_1$ | $\{\$\}$ |
-| $S_2$ | $\{\$\}$ |
-| $T$ | $\{a\}$ (из правил $T \to aTa$, $T \to bTa$) $\cup\ FIRST(R) \setminus \{\varepsilon\}\ \cup\ FOLLOW(S_1)$ = $\{a, b, \$\}$ |
-| $R$ | $FOLLOW(S_1) = \{\$\}$ |
-| $Q$ | $FIRST(U) \setminus \{\varepsilon\} \cup FOLLOW(S_2)$ = $\{a, \$\}$ |
-| $U$ | $\{a, b\} \cup FOLLOW(S_2)$ = $\{a, b, \$\}$ |
+| $S$ | $\{\textdollar\}$ |
+| $S_1$ | $\{\textdollar\}$ |
+| $S_2$ | $\{\textdollar\}$ |
+| $T$ | $\{a\}$ (из правил $T \to aTa$, $T \to bTa$) $\cup\ FIRST(R) \setminus \{\varepsilon\}\ \cup\ FOLLOW(S_1)$ = $\{a, b, \textdollar\}$ |
+| $R$ | $FOLLOW(S_1) = \{\textdollar\}$ |
+| $Q$ | $FIRST(U) \setminus \{\varepsilon\} \cup FOLLOW(S_2)$ = $\{a, \textdollar\}$ |
+| $U$ | $\{a, b\} \cup FOLLOW(S_2)$ = $\{a, b, \textdollar\}$ |
 
 Вычисление FOLLOW:
 - $S \to S_1 \mid S_2$: $FOLLOW(S_1) \supseteq FOLLOW(S)$, $FOLLOW(S_2) \supseteq FOLLOW(S)$
-- $S_1 \to TR$: $FOLLOW(T) \supseteq FIRST(R) \setminus \{\varepsilon\} = \{a,b\}$. Так как $\varepsilon \in FIRST(R)$: $FOLLOW(T) \supseteq FOLLOW(S_1) = \{\$\}$. Итого $FOLLOW(T) = \{a, b, \$\}$.
-- $S_1 \to TR$: $FOLLOW(R) \supseteq FOLLOW(S_1) = \{\$\}$.
-- $S_2 \to QU$: $FOLLOW(Q) \supseteq FIRST(U) \setminus \{\varepsilon\} = \{a\}$. Так как $\varepsilon \in FIRST(U)$: $FOLLOW(Q) \supseteq FOLLOW(S_2) = \{\$\}$. Итого $FOLLOW(Q) = \{a, \$\}$.
-- $S_2 \to QU$: $FOLLOW(U) \supseteq FOLLOW(S_2) = \{\$\}$.
-- $U \to aUa \mid aUb$: $FOLLOW(U) \supseteq \{a, b\}$. Итого $FOLLOW(U) = \{a, b, \$\}$.
+- $S_1 \to TR$: $FOLLOW(T) \supseteq FIRST(R) \setminus \{\varepsilon\} = \{a,b\}$. Так как $\varepsilon \in FIRST(R)$: $FOLLOW(T) \supseteq FOLLOW(S_1) = \{\textdollar\}$. Итого $FOLLOW(T) = \{a, b, \textdollar\}$.
+- $S_1 \to TR$: $FOLLOW(R) \supseteq FOLLOW(S_1) = \{\textdollar\}$.
+- $S_2 \to QU$: $FOLLOW(Q) \supseteq FIRST(U) \setminus \{\varepsilon\} = \{a\}$. Так как $\varepsilon \in FIRST(U)$: $FOLLOW(Q) \supseteq FOLLOW(S_2) = \{\textdollar\}$. Итого $FOLLOW(Q) = \{a, \textdollar\}$.
+- $S_2 \to QU$: $FOLLOW(U) \supseteq FOLLOW(S_2) = \{\textdollar\}$.
+- $U \to aUa \mid aUb$: $FOLLOW(U) \supseteq \{a, b\}$. Итого $FOLLOW(U) = \{a, b, \textdollar\}$.
 - $T \to aTa \mid bTa$: $FOLLOW(T) \supseteq \{a\}$ (уже включено).
 
 ### 7.2. Конфликты — не LL(1)
@@ -433,7 +433,7 @@ M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)
 
 **Для $R$:** $R \to aR \mid bR \mid \varepsilon$.
 - $FIRST(aR) = \{a\}$, $FIRST(bR) = \{b\}$, $FIRST(\varepsilon) = \{\varepsilon\}$.
-- Попарно не пересекаются. Также $FOLLOW(R) = \{\$\}$, и $\{a\} \cap \{\$\} = \emptyset$, $\{b\} \cap \{\$\} = \emptyset$.
+- Попарно не пересекаются. Также $FOLLOW(R) = \{\textdollar\}$, и $\{a\} \cap \{\textdollar\} = \emptyset$, $\{b\} \cap \{\textdollar\} = \emptyset$.
 - **Нет конфликта** для $R$.
 
 **Для $Q$:** $Q \to aQ \mid bQ \mid a$.
@@ -456,7 +456,7 @@ M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)
 
 LL(1)-таблица разбора для нетерминала $S$ при входном символе $a$:
 
-| | $a$ | $b$ | $\$$ |
+| | $a$ | $b$ | $\textdollar$ |
 |---|-----|-----|------|
 | $S$ | $S \to S_1$ **или** $S \to S_2$ (конфликт) | $S \to S_1$ **или** $S \to S_2$ (конфликт) | — |
 
