@@ -2,7 +2,9 @@
 
 ## 1. Определение языка
 
-$$L = \{w_1\, a^n\, w_2 \mid (|w_1| = n \lor |w_2| < n)\ \&\ w_i \in \{a, b\}^*\}$$
+```math
+L = \\{w_1\, a^n\, w_2 \mid (|w_1| = n \lor |w_2| < n)\ \&\ w_i \in \\{a, b\\}^*\\}
+```
 
 Алфавит: $\Sigma = \{a, b\}$.
 
@@ -19,8 +21,13 @@ $$L = \{w_1\, a^n\, w_2 \mid (|w_1| = n \lor |w_2| < n)\ \&\ w_i \in \{a, b\}^*\
 
 Представим $L = L_1 \cup L_2$, где:
 
-$$L_1 = \{w_1\, a^n\, w_2 : |w_1| = n,\ n \geq 1,\ w_1, w_2 \in \{a,b\}^*\}$$
-$$L_2 = \{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1,\ w_1, w_2 \in \{a,b\}^*\}$$
+```math
+L_1 = \\{w_1\, a^n\, w_2 : |w_1| = n,\ n \geq 1,\ w_1, w_2 \in \\{a,b\\}^*\\}
+```
+
+```math
+L_2 = \\{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1,\ w_1, w_2 \in \\{a,b\\}^*\\}
+```
 
 ### 2.1. Характеризация $L_1$
 
@@ -98,7 +105,9 @@ $$L_2 = \{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1,\ w_1, w_2 \in \{a,b\}^*\}$$
 
 Рассмотрим пересечение $\overline{L}$ с регулярным языком $b^* a^* b^*$:
 
-$$\overline{L} \cap b^* a^* b^* = \{b^i a^j b^k : j < i\ \text{и}\ j \leq k\} \cup \{b^i b^k : i,k \geq 0\}$$
+```math
+\overline{L} \cap b^* a^* b^* = \\{b^i a^j b^k : j < i\ \text{и}\ j \leq k\\} \cup \\{b^i b^k : i,k \geq 0\\}
+```
 
 (строки без $a$ тривиально не в $L$; строки $b^i a^j b^k$ не в $L$ тогда и только тогда, когда $j < i$ и $j \leq k$, что было показано в разделе 2.)
 
@@ -130,24 +139,32 @@ $$\overline{L} \cap b^* a^* b^* = \{b^i a^j b^k : j < i\ \text{и}\ j \leq k\} \
 
 ### 4.1. Грамматика для $L_1$
 
-$L_1 = \{w_1\, a^n\, w_2 : |w_1| = n,\ n \geq 1\}$
+```math
+L_1 = \{w_1\, a^n\, w_2 : |w_1| = n,\ n \geq 1\}
+```
 
 Нетерминал $T$ порождает строки вида $w_1 a^{|w_1|}$, где $|w_1| \geq 1$:
 
-$$T \to a\,T\,a \mid b\,T\,a \mid a\,a \mid b\,a$$
+```math
+T \to a\,T\,a \mid b\,T\,a \mid a\,a \mid b\,a
+```
 
 Проверка: $T \Rightarrow ba$ — это $w_1 = b$, $a^1$, $|w_1| = 1 = n$. ✓  
 $T \Rightarrow a\,T\,a \Rightarrow a\,b\,a\,a$ — это $w_1 = ab$, $a^2$, $|w_1| = 2 = n$. ✓
 
 Нетерминал $R$ порождает $\{a,b\}^*$:
 
-$$R \to a\,R \mid b\,R \mid \varepsilon$$
+```math
+R \to a\,R \mid b\,R \mid \varepsilon
+```
 
 Грамматика для $L_1$: $S_1 \to T\,R$
 
 ### 4.2. Грамматика для $L_2$
 
-$L_2 = \{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1\}$
+```math
+L_2 = \{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1\}
+```
 
 Перепишем условие: $n > |w_2|$, т.е. $n = |w_2| + k$, $k \geq 1$.
 
@@ -155,7 +172,9 @@ $L_2 = \{w_1\, a^n\, w_2 : |w_2| < n,\ n \geq 1\}$
 
 Нетерминал $U$ порождает строки вида $a^{|w_2|}\, w_2$, где $w_2 \in \{a,b\}^*$:
 
-$$U \to a\,U\,a \mid a\,U\,b \mid \varepsilon$$
+```math
+U \to a\,U\,a \mid a\,U\,b \mid \varepsilon
+```
 
 Проверка: $U \Rightarrow \varepsilon$ — $w_2 = \varepsilon$, $a^0 = \varepsilon$. ✓  
 $U \Rightarrow a\,U\,b \Rightarrow a\,b$ — $w_2 = b$, $a^1 b$, $|w_2| = 1$. ✓  
@@ -163,11 +182,15 @@ $U \Rightarrow a\,U\,a \Rightarrow a\,a\,U\,b\,a \Rightarrow a\,a\,b\,a$ — $w_
 
 Нетерминал $A$ порождает $a^+$ (минимум одна $a$ — это «лишние» буквы):
 
-$$A \to a\,A \mid a$$
+```math
+A \to a\,A \mid a
+```
 
 Нетерминал $Q$ порождает $w_1 \cdot a^k = \{a,b\}^*\, a^+$, т.е. любую непустую строку, оканчивающуюся на $a$:
 
-$$Q \to a\,Q \mid b\,Q \mid a$$
+```math
+Q \to a\,Q \mid b\,Q \mid a
+```
 
 (Или эквивалентно: $Q = R \cdot A$, но компактнее записать одним нетерминалом.)
 
@@ -175,7 +198,9 @@ $$Q \to a\,Q \mid b\,Q \mid a$$
 
 ### 4.3. Полная грамматика для $L$
 
-$$G = (\{S, S_1, S_2, T, R, Q, U\},\ \{a, b\},\ P,\ S)$$
+```math
+G = (\\{S, S_1, S_2, T, R, Q, U\\},\ \\{a, b\\},\ P,\ S)
+```
 
 Правила $P$:
 
@@ -214,7 +239,11 @@ $S \Rightarrow S_1 \Rightarrow T\,R \Rightarrow a\,a \cdot R \Rightarrow a\,a\,b
 ($w_1 = a$, $a^1$, $w_2 = b$, $|w_1| = 1 = n$.)
 
 **Строка $abba$ (ожидаем: $\in L$):**  
-$S \Rightarrow S_2 \Rightarrow Q\,U \Rightarrow b\,Q\,U \Rightarrow b\,a\,U \Rightarrow b\,a\,a\,U\,a \Rightarrow b\,a\,a\,\varepsilon\,a = baaa$  
+
+```math
+S \Rightarrow S_2 \Rightarrow Q\,U \Rightarrow b\,Q\,U \Rightarrow b\,a\,U \Rightarrow b\,a\,a\,U\,a \Rightarrow b\,a\,a\,\varepsilon\,a = baaa
+```
+
 Не то. Попробуем иначе:  
 $S \Rightarrow S_2 \Rightarrow Q\,U$. Нужно $Q\,U = abba$.  
 $Q = a$, $U = bba$? $U$ начинается с $a$, а $bba$ начинается с $b$ — не подходит.  
@@ -255,7 +284,9 @@ $TR$: $T$ порождает строку, заканчивающуюся на $
 
 ### 5.2. Формальное определение
 
-$$M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$$
+```math
+M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)
+```
 
 где:
 
