@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <defs>
+    <style>
+      .title { font-family:"DejaVu Sans", Arial, sans-serif; font-size:18px; font-weight:700; fill:#111827; }
+      .txt { font-family:"DejaVu Sans", Arial, sans-serif; font-size:16px; fill:#111827; }
+      .mono { font-family:"DejaVu Sans Mono", ui-monospace, monospace; font-size:15px; fill:#111827; }
+      .cell { fill:#ffffff; stroke:#1f2937; stroke-width:1.6; }
+      .hdr  { fill:#f3f4f6; stroke:#1f2937; stroke-width:1.6; }
+      .ok   { fill:#065f46; font-weight:700; }
+      .bad  { fill:#991b1b; font-weight:700; }
+    </style>
+  </defs>
+
+  <text class="title" x="30" y="35">№2: Таблица различимости для L∩K (Майхилл–Нерод)</text>
+  <text class="txt" x="30" y="62">Префиксы uₙ = b aⁿ b, суффиксы zₙ = (ab)ⁿ. Тогда uₙzₙ ∈ L∩K, но для m&gt;n: uₘzₙ ∉ L∩K.</text>
+
+  <!-- Table geometry -->
+  <!-- columns: n | u_n | z_n | u_n z_n | u_{n+1} z_n -->
+  <g transform="translate(30,90)">
+    <!-- header -->
+    <rect class="hdr" x="0" y="0" width="60" height="40"/>
+    <rect class="hdr" x="60" y="0" width="250" height="40"/>
+    <rect class="hdr" x="310" y="0" width="170" height="40"/>
+    <rect class="hdr" x="480" y="0" width="170" height="40"/>
+    <rect class="hdr" x="650" y="0" width="220" height="40"/>
+
+    <text class="txt" x="30" y="26" text-anchor="middle">n</text>
+    <text class="txt" x="185" y="26" text-anchor="middle">uₙ</text>
+    <text class="txt" x="395" y="26" text-anchor="middle">zₙ</text>
+    <text class="txt" x="565" y="26" text-anchor="middle">uₙzₙ</text>
+    <text class="txt" x="760" y="26" text-anchor="middle">uₙ₊₁zₙ</text>
+
+    <!-- rows -->
+    <!-- row 1 -->
+    <rect class="cell" x="0" y="40" width="60" height="52"/>
+    <rect class="cell" x="60" y="40" width="250" height="52"/>
+    <rect class="cell" x="310" y="40" width="170" height="52"/>
+    <rect class="cell" x="480" y="40" width="170" height="52"/>
+    <rect class="cell" x="650" y="40" width="220" height="52"/>
+
+    <text class="mono" x="30" y="72" text-anchor="middle">1</text>
+    <text class="mono" x="185" y="72" text-anchor="middle">bab</text>
+    <text class="mono" x="395" y="72" text-anchor="middle">(ab)</text>
+    <text class="mono ok" x="565" y="72" text-anchor="middle">✓  babab</text>
+    <text class="mono bad" x="760" y="72" text-anchor="middle">✗  baabab</text>
+
+    <!-- row 2 -->
+    <rect class="cell" x="0" y="92" width="60" height="52"/>
+    <rect class="cell" x="60" y="92" width="250" height="52"/>
+    <rect class="cell" x="310" y="92" width="170" height="52"/>
+    <rect class="cell" x="480" y="92" width="170" height="52"/>
+    <rect class="cell" x="650" y="92" width="220" height="52"/>
+
+    <text class="mono" x="30" y="124" text-anchor="middle">2</text>
+    <text class="mono" x="185" y="124" text-anchor="middle">baab</text>
+    <text class="mono" x="395" y="124" text-anchor="middle">(ab)²</text>
+    <text class="mono ok" x="565" y="124" text-anchor="middle">✓  baababab</text>
+    <text class="mono bad" x="760" y="124" text-anchor="middle">✗  baaababab</text>
+
+    <!-- row 3 -->
+    <rect class="cell" x="0" y="144" width="60" height="52"/>
+    <rect class="cell" x="60" y="144" width="250" height="52"/>
+    <rect class="cell" x="310" y="144" width="170" height="52"/>
+    <rect class="cell" x="480" y="144" width="170" height="52"/>
+    <rect class="cell" x="650" y="144" width="220" height="52"/>
+
+    <text class="mono" x="30" y="176" text-anchor="middle">3</text>
+    <text class="mono" x="185" y="176" text-anchor="middle">baaab</text>
+    <text class="mono" x="395" y="176" text-anchor="middle">(ab)³</text>
+    <text class="mono ok" x="565" y="176" text-anchor="middle">✓  baaabababab</text>
+    <text class="mono bad" x="760" y="176" text-anchor="middle">✗  baaaabababab</text>
+
+    <!-- footer note -->
+    <text class="txt" x="435" y="240" text-anchor="middle">Для любого n: uₙzₙ ∈ L∩K, но uₙ₊₁zₙ ∉ L∩K ⇒ бесконечно много классов эквивалентности.</text>
+  </g>
+</svg>
